@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n=height.size(); 
+        int l=0,r=n-1; 
+        int x=n-1; 
+        int maxarea=INT_MIN; 
+        
+        while(l < r) 
+        {
+         int area=(min(height[l], height[r]) * x); 
+            if(area > maxarea) 
+            {
+                maxarea = area; 
+            } 
+            if(height[l] > height[r]) 
+            {
+                r--; 
+            } 
+            else 
+            {
+                l++; 
+            }
+            x--; 
+        } 
+        return maxarea; 
+    }
+}; 
+
+// time complexity : o(n) 
+// space complexity : o(1) 
