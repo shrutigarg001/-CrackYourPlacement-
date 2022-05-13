@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std; 
+
+void duplicates(string s) 
+{
+  int arr[26]={0}; 
+
+  for(int i=0;i<s.length();i++) 
+    { 
+      if(s[i] >= 'a' && s[i] <= 'z') 
+      { 
+      int index=s[i] - 'a'; 
+        arr[index]++; 
+        } 
+      else 
+      {
+        int index=s[i] - 'A'; 
+        arr[index]++; 
+      }
+    } 
+
+  for(int i=0;i<26;i++) 
+    {
+      if(arr[i] > 1) 
+      { 
+        char ch=i + 'a'; 
+        cout << arr[i] << " " << ch << endl; 
+      }
+    }
+}
+int main() {
+    string str="geeksforgeeks"; 
+    duplicates(str); 
+    return 0;
+} 
+
+// time complexity : o(n) 
+// space complexity : o(1) 
