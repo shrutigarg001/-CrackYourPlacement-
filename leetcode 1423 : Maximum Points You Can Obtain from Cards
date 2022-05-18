@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+       int n=cardPoints.size(); 
+        
+        int sum=0,ans=0; 
+        
+        for(int i=0;i<n;i++) 
+        {
+            sum += cardPoints[i]; 
+        } 
+        
+        
+        int window=n-k; 
+        // first window 
+        
+        int win_sum=0; 
+        for(int i=0;i<window;i++) 
+        {
+            win_sum += cardPoints[i]; 
+        } 
+        
+        ans = sum - win_sum; 
+        
+        for(int i=1;i<=(n-window);i++) 
+        {
+            win_sum = win_sum - cardPoints[i-1] + cardPoints[i+window-1]; 
+            
+            ans = max(ans, (sum - win_sum)); 
+        }
+        return ans; 
+    }
+}; 
+
+// time complexity : o(n) 
+// space complexity : o(1) 
