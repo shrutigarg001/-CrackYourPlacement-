@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int n=nums.size(); 
+        
+        unordered_map<int, int> m; 
+        
+        m[0] = 1; 
+        int sum=0; 
+        int cur_sum=0; 
+        int count=0; 
+        for(int i=0;i<n;i++) 
+        {
+            sum += nums[i]; 
+            
+            cur_sum = sum - k; 
+            
+            if((m.find(cur_sum)) != m.end()) 
+            {
+               count = count + m[cur_sum]; 
+                m[sum]++; 
+            } 
+            else 
+            {
+                m[sum]++;  
+            }
+        } 
+        return count; 
+    }
+}; 
+
+// time complexity : o(n) 
+// space complexity : o(n) 
